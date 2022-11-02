@@ -1,59 +1,56 @@
-var win = 0;
-var lose = 0;
-var ties = 0;
+    let win = 0;
+    let lose= 0;
+    let tie = 0;
 
-var playGame = confirm("Would you like to play the game?")
-console.log(playGame);
+    let myArr = ["Rock", "Paper", "Scissors"];
 
-if (playGame == false) {
-    console.log("Stop the game");
-}
-else {
-    var game = function () {
-        console.log("Continue the game");
+    playGame = () => {
+        let userPrompt = window.prompt("Enter Rock, Paper or Scissors");
 
-        var userChoice = prompt("Enter P, R or S");
-        userChoice = userChoice.toUpperCase();
-        console.log(userChoice);
-        if (userChoice == null) {
-            console.log("Stop the game");
+        if(!userPrompt){
+            console.log("Enter some value")
         }
-        else {
-            var computerChoice = ["R", "P", "S"];
-            var computerMath = Math.floor(Math.random() * computerChoice.length);
-            var choice = computerChoice[computerMath];
-
-            alert("Computer choose : " + choice);
-
-            if (choice == computerChoice) {
-                ties++;
-                alert("Its a tie")
-                
-            }
-            else if (
-                (choice === "R") && (computerChoice === "P") ||
-                (choice === "P") && (computerChoice === "S") ||
-                (choice === "R") && (computerChoice === "S")
-            ) {
-                win++;
-                alert("You win")
-                
-            }
-            else {
-                lose++;
-                alert("You lose")
-                
-            }
-
-            alert("No of win : " + win + "\nNo of lose : " + lose + "\nNo of ties : " + ties)
+    
+        let Input = Math.floor(Math.random() * myArr.length);
+        let computerInput = myArr[Input];
+    
+        window.alert("Computer chose the word : "+ computerInput);
+    
+        if(userPrompt === computerInput){
+            tie++;
+            window.alert("Its a tie")
+            
         }
-        var playagain = confirm("Do you want to play again")
-        if (playagain) {
-            game();
+        else if 
+        (
+            (userPrompt === "Rock" && computerInput === "Scissors") ||
+            (userPrompt === "Paper" && computerInput === "Rock") ||
+            (userPrompt === "Scissors" && computerInput === "Paper")
+        ){
+            win++;
+            window.alert("You Won");
+            
         }
+        else{
+            lose++;
+            window.alert("You lost");
+            
+        }
+        window.alert(
+            "Stats:\nWins : " + win + "\nlose : " + lose + "\ntie : " + tie 
+            );
 
+            playAgain();
     }
-}
-game();
 
-
+    playAgain = () =>{
+        window.confirm("PlayAgain?");
+        if(playAgain)
+        {
+            playGame();
+        }
+        
+    } 
+    
+ playGame();
+ 
